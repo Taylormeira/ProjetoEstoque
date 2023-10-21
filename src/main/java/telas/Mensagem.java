@@ -1,4 +1,4 @@
-package Telas;
+package telas;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -8,6 +8,8 @@ public class Mensagem {
     }
 
     public static void erro(String mensagem, Exception ex){
+        ex.printStackTrace();
+
         Alert alert = new Alert(Alert.AlertType.ERROR, ex.getMessage(), ButtonType.YES);
         alert.setTitle("Erro");
         alert.setHeaderText(mensagem);
