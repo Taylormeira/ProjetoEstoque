@@ -11,7 +11,7 @@ public class App extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/telas/principalPage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/telas/PrincipalPage.fxml"));
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
