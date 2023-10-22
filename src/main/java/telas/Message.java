@@ -3,8 +3,8 @@ package telas;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
-public class Mensagem {
-    private Mensagem(){
+public class Message {
+    private Message(){
     }
 
     public static void erro(String mensagem, Exception ex){

@@ -31,7 +31,7 @@ public class PrincipalPageController extends PageController implements Initializ
             load.showAndWait();
 
         } catch (Exception e) {
-            Mensagem.erro("Erro ao abrir a tela de Estoque", e);
+            Message.erro("Erro ao abrir a tela de Estoque", e);
         }
     }
 }

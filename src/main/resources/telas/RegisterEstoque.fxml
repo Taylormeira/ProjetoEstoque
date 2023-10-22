@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<GridPane hgap="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="188.0" prefWidth="373.0" vgap="5.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="telas.RegisterEstoqueController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="169.20001220703125" minWidth="10.0" prefWidth="164.39998779296874" />
+        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="203.60001220703128" minWidth="10.0" prefWidth="183.60001220703128" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="54.599981689453124" minHeight="10.0" prefHeight="29.599993896484385" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="82.6" minHeight="10.0" prefHeight="31.60000000000001" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="97.79998016357422" minHeight="10.0" prefHeight="29.199993896484358" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="112.00001068115233" minHeight="10.0" prefHeight="42.00000610351563" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+    <children>
+        <TextField fx:id="tfCodEstoque" prefHeight="57.0" prefWidth="202.0" GridPane.columnIndex="1" />
+        <TextField fx:id="tfDescEstoque" prefHeight="55.0" prefWidth="174.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <TextField fx:id="tfLocation" prefHeight="46.0" prefWidth="152.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Codigo Estoque">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Descrição Estoque" GridPane.rowIndex="1">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Localicação" wrappingWidth="106.13671684265137" GridPane.rowIndex="2">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <Button fx:id="btnRegisterEstoqueGoOut" mnemonicParsing="false" text="Sair" GridPane.rowIndex="3" />
+        <Button fx:id="btnRegisterSave" mnemonicParsing="false" text="Salvar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    </children>
+</GridPane>
