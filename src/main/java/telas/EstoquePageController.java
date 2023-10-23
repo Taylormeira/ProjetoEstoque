@@ -27,8 +27,6 @@ public class EstoquePageController extends PageController implements Initializab
     @FXML
     private Button btnDelete;
     @FXML
-    private Button btnDeploy;
-    @FXML
     private TableView<EstoqueModels> tbEstoques;
     @FXML
     private TableColumn<EstoqueModels, String> colCodEstoque;
@@ -45,7 +43,6 @@ public class EstoquePageController extends PageController implements Initializab
         btnAdd.setOnAction(event -> buttonAdd());
         btnAlter.setOnAction(event -> buttonAlter());
         btnDelete.setOnAction(event -> buttonDelete());
-        btnDeploy.setOnAction(event -> buttonDeploy());
 
         initButtonGoOut(btnEstoqueGoOut);
 
@@ -61,7 +58,7 @@ public class EstoquePageController extends PageController implements Initializab
             tbEstoques.getItems().clear();
             tbEstoques.getItems().addAll(estoqueController.loadEstoque());
         } catch (Exception e) {
-            Message.erro("erro ao carregar planilha", e);
+            Message.erro("erro ao carregar dados", e);
         }
     }
 
@@ -77,12 +74,6 @@ public class EstoquePageController extends PageController implements Initializab
             load.showAndWait();
 
             RegisterEstoqueController registerEstoqueController = loader.getController();
-
-            EstoqueModels estoqueModels = registerEstoqueController.getEstoque();
-
-            if (estoqueModels != null) {
-                tbEstoques.getItems().add(estoqueModels);
-            }
 
         } catch (Exception e) {
             Message.erro("Erro ao adicionar estoque", e);
@@ -107,14 +98,6 @@ public class EstoquePageController extends PageController implements Initializab
 
                 load.showAndWait();
 
-                EstoqueModels estoqueModels = registerEstoqueController.getEstoque();
-
-                if (estoqueModels != null) {
-                    tbEstoques.getItems().set(index, estoqueModels);
-                }
-                Message.sucesso("Item Excluido");
-                //// TODO: 22/10/2023 revissar o porque a mensagem de sucesso não está aparecendo
-
             } catch (Exception e) {
                 Message.erro("Erro ao alterar o estoque", e);
             }
@@ -127,11 +110,5 @@ public class EstoquePageController extends PageController implements Initializab
         if (index >= 0) {
             tbEstoques.getItems().remove(index);
         }
-    }
-
-    public void buttonDeploy() {
-        Message.sucesso("Deploy no Banco executado");
-
-        //// TODO: 22/10/2023 realizar a comunicação com a base de dados para assim poder realizar o deploy dos dados.
     }
 }

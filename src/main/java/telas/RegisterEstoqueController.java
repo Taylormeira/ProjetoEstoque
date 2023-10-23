@@ -1,5 +1,6 @@
 package telas;
 
+import controllers.EstoqueController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import models.EstoqueModels;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.UUID;
 
@@ -22,23 +24,26 @@ public class RegisterEstoqueController extends PageController implements Initial
     private TextField tfLocation;
     @FXML
     private TextField tfCodEstoque;
-    @Getter
-    private EstoqueModels estoque = null;
+    private EstoqueController estoque = new EstoqueController();
 
 
     public void initialize(URL Location, ResourceBundle resources) {
         btnRegisterSave.setOnAction(event -> buttonSave());
 
         initButtonGoOut(btnRegisterEstoqueGoOut);
+
+        limitSize(tfDescEstoque,100);
+        limitSize(tfLocation,100);
     }
     private void buttonSave(){
-        estoque = new EstoqueModels();
+        try {
+            estoque.createEstoque(tfDescEstoque.getText(),tfLocation.getText());
 
-        estoque.setCodEstoque(UUID.randomUUID());
-        estoque.setDescEstoque(tfDescEstoque.getText());
-        estoque.setLocation(tfLocation.getText());
+            Message.sucesso("Estoque Salvo com sucesso!");
+        } catch (Exception e) {
+            Message.erro("erro ao criar o estoque", e);
+        }
 
-        Message.sucesso("Estoque Salvo com sucesso!");
 
        //// TODO: 22/10/2023 Adicionar fechamento de Scena no após compilar os dados na tabela de estoque
     }
