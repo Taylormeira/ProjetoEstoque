@@ -1,7 +1,7 @@
 package exceptions;
 
-public class EstoqueExceptions extends Exception{
-    public EstoqueExceptions(String message){
+public class EstoqueExceptions extends Exception {
+    public EstoqueExceptions(String message) {
 
     }
 }

@@ -10,10 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import lombok.Getter;
 import models.EstoqueModels;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -50,13 +48,13 @@ public class EstoquePageController extends PageController implements Initializab
         colDescEstoque.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getDescEstoque()));
         colLocation.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getLocation()));
 
-        loadSheet();
+        loadDataInformartion();
     }
 
-    public void loadSheet() {
+    public void loadDataInformartion() {
         try {
             tbEstoques.getItems().clear();
-            tbEstoques.getItems().addAll(estoqueController.loadEstoque());
+            tbEstoques.getItems().addAll(estoqueController.selectAll());
         } catch (Exception e) {
             Message.erro("erro ao carregar dados", e);
         }
@@ -73,7 +71,7 @@ public class EstoquePageController extends PageController implements Initializab
 
             load.showAndWait();
 
-            RegisterEstoqueController registerEstoqueController = loader.getController();
+            loadDataInformartion();
 
         } catch (Exception e) {
             Message.erro("Erro ao adicionar estoque", e);
@@ -94,9 +92,10 @@ public class EstoquePageController extends PageController implements Initializab
                 load.setTitle("Alterar Estoque");
 
                 RegisterEstoqueController registerEstoqueController = loader.getController();
-                registerEstoqueController.loadEstoque(tbEstoques.getItems().get(index));
+                registerEstoqueController.load(tbEstoques.getItems().get(index).getCodEstoque());
 
                 load.showAndWait();
+                loadDataInformartion();
 
             } catch (Exception e) {
                 Message.erro("Erro ao alterar o estoque", e);
