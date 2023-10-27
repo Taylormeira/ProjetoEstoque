@@ -34,7 +34,6 @@ public class EstoquePageController extends PageController implements Initializab
     private TableColumn<EstoqueModels, String> colLocation;
 
     private EstoqueController estoqueController = new EstoqueController();
-    RegisterEstoqueController registerEstoqueController = new RegisterEstoqueController();
 
     @Override
     public void initialize(URL Location, ResourceBundle resources) {
@@ -91,7 +90,7 @@ public class EstoquePageController extends PageController implements Initializab
 
                 load.setTitle("Alterar Estoque");
 
-                registerEstoqueController = loader.getController();
+                RegisterEstoqueController registerEstoqueController = loader.getController();
                 registerEstoqueController.load(tbEstoques.getItems().get(index).getCodEstoque());
 
                 load.showAndWait();
