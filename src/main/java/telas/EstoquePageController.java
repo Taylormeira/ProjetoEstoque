@@ -33,8 +33,8 @@ public class EstoquePageController extends PageController implements Initializab
     @FXML
     private TableColumn<EstoqueModels, String> colLocation;
 
-
     private EstoqueController estoqueController = new EstoqueController();
+    RegisterEstoqueController registerEstoqueController = new RegisterEstoqueController();
 
     @Override
     public void initialize(URL Location, ResourceBundle resources) {
@@ -79,7 +79,7 @@ public class EstoquePageController extends PageController implements Initializab
     }
 
     public void buttonAlter() {
-        int index = tbEstoques.getSelectionModel().getSelectedIndex();
+        int index =  tbEstoques.getSelectionModel().getSelectedIndex();
 
         if (index >= 0) {
             try {
@@ -91,7 +91,7 @@ public class EstoquePageController extends PageController implements Initializab
 
                 load.setTitle("Alterar Estoque");
 
-                RegisterEstoqueController registerEstoqueController = loader.getController();
+                registerEstoqueController = loader.getController();
                 registerEstoqueController.load(tbEstoques.getItems().get(index).getCodEstoque());
 
                 load.showAndWait();
@@ -104,10 +104,12 @@ public class EstoquePageController extends PageController implements Initializab
     }
 
     public void buttonDelete() {
-        int index = tbEstoques.getSelectionModel().getSelectedIndex();
-
-        if (index >= 0) {
-            tbEstoques.getItems().remove(index);
+        try{
+            estoqueController.delete(tbEstoques.getSelectionModel().getSelectedItem());
+            loadDataInformartion();
+        }catch (Exception e){
+            Message.erro("Não foi possivel deletar o item selecionado", e);
         }
+
     }
 }

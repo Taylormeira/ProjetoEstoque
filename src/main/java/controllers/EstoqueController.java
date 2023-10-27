@@ -88,7 +88,15 @@ public class EstoqueController {
         }
     }
 
-    public void delete() {
-        System.out.println("Estoque Deletado");
+    public void delete(EstoqueModels estoque)  throws  SQLException{
+        try (Connection conn = connection.connectionDb()) {
+            try (PreparedStatement statement = conn.prepareStatement("Delete from tb_Estoque  where CodEstoque = ?")) {
+                int index = 0;
+
+                statement.setObject(++index, estoque.getCodEstoque().toString());
+
+                statement.executeUpdate();
+            }
+        }
     }
 }
